@@ -1,8 +1,8 @@
-# [2022-1] Robot Control 실습
+# [2023-1] Robot Control 실습
 
 
-#### Gazebo Simulation for RoK-3.
-본 패키지는 휴머노이드 로봇 RoK-3의 교육용 Gazebo Simulation 입니다.
+#### Gazebo Simulation for RB1_500e.
+본 패키지는 휴머노이드 로봇 RB1_500e의 교육용 Gazebo Simulation 입니다.
 이 문서는 패키지의 설명 문서이며, 구성은 다음과 같습니다.
 
 * What to do before simulation
@@ -384,9 +384,9 @@ MatrixXd jointToRotMat(VectorXd q)
 VectorXd rotToEuler(MatrixXd rotMat)	// EulerZYX
 ~~~
 
-## 2. 실습 2 : RoK-3의 Forward Kinematics  
+## 2. 실습 2 : RB1_500e의 Forward Kinematics  
 
-<img width="700" src="./RoK-3_img/RoK-3 Frame.jpg" alt="rok-3 frame">  
+<img width="700" src="./RB1_500e_img/RB1_500e Frame.jpg" alt="RB1_500e frame">  
     
 * Homogeneous Transformation Matrix 만들기
 ~~~c
@@ -413,7 +413,7 @@ VectorXd rotToEuler(MatrixXd rotMat)
 2. 출력된 결과물 capture 파일
 
 
-## 3. 실습 3 : RoK-3의 Geometric Jacobian
+## 3. 실습 3 : RB1_500e의 Geometric Jacobian
 
 * jointToPosJac 함수 만들기
 ~~~c
@@ -537,7 +537,7 @@ MatrixXd jointToRotJac(VectorXd q)
 2. 출력된 결과물 capture 파일
 
 
-## 실습 4 : RoK-3의 Pseudo-Inverse 함수와 rotTatToRotVec 함수 만들리
+## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotTatToRotVec 함수 만들리
 
 * pseudoInverseMat 함수 만들기
 ~~~c
@@ -597,7 +597,7 @@ dph = rotMatToRotVec(C_err);
 
 
 
-## 5. 실습 5 : RoK-3의 Numerical Inverse Kinematics
+## 5. 실습 5 : RB1_500e의 Numerical Inverse Kinematics
 
 * inverseKinematics 함수 만들기
 ~~~c
@@ -689,7 +689,7 @@ void Practice()
 * Result = [0;0;-63.756;127.512;-63.756]
 
 
-## 6. 실습 6 : RoK-3의 Motion Control
+## 6. 실습 6 : RB1_500e의 Motion Control
 
 * 1-cos 함수로 trajectory 생성하기
 
