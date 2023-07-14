@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+<world name="rb1_500e.world">
+    <gui>
+        <camera name="user_camera">
+
+        <pose>1.245 -1.8 1.2 0 0.3156 2.096</pose>
+
+        </camera>
+    </gui>
+    <physics name="default_physics" default="0" type="ode">
+    <ode>
+        <solver>
+            <type>quick</type>
+            <iters>25</iters>
+            <use_dynamic_moi_rescaling>false</use_dynamic_moi_rescaling>
+        </solver>
+    </ode>
+    
+    <max_step_size>0.001</max_step_size>
+    <real_time_update_rate>1000.0</real_time_update_rate>
+
+    <real_time_factor>1</real_time_factor>
+    
+</physics>
+ 
+<include>
+<uri>model://ground_plane</uri>
+</include>
+
+<include>
+<uri>model://sun</uri>
+</include>
+
+<include>
+<uri>model://RB1_500e</uri>
+
+<pose frame=''>0 0 0.0 0 0 0</pose>
+<plugin name="main" filename="librb1_500e_study.so"/>
+</include>
+</world>
+</sdf>
