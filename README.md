@@ -650,14 +650,14 @@ double func_1_cos(double t, double, init, double final, double T)
 ~~~  
 
 
-### 과제
+<!-- ### 과제
 0. 5초동안, 초기자세에서 실습5-2의 자세로 움직이기 in Joint Coordinates
 1. 5초동안, z방향으로 0.2m 이동하기(다리들기) in Cartesian Coordinates
 2. 5초동안 0.2m 다리들기, 5초동안 0.2m 다리내리기 in Cartesian Coordinates
-3. 5초동안 0.2m 다리들기, 5초동안, z축으로 90도 회전하기 in Cartesian Coordinates
+3. 5초동안 0.2m 다리들기, 5초동안, z축으로 90도 회전하기 in Cartesian Coordinates -->
 
 
-## 7. 실습 7 : Static walking in the air (2-step walking)
+<!-- ## 7. 실습 7 : Static walking in the air (2-step walking)
 
 1. 5초동안, Walk ready 자세 만들기 
 	* Right foot : Desired Pos = [0;0.105;-0.55] & Desired Orientation = Base) (Joint Coordinates)
@@ -668,4 +668,4 @@ double func_1_cos(double t, double, init, double final, double T)
 6. 두발 지지 (Cartesian Coordinates)
 
 ### 과제
-* 땅에서 실습 7 수행하기
+* 땅에서 실습 7 수행하기 -->
