@@ -166,9 +166,9 @@ User에는 GitHUB의 user_name을 쓰고, Password에는 GitHUB의 `Token passwo
 
 6. Parent Directory를 사용자의 `home/user_name/catkin_ws/src` 경로로 설정하고, Clone name을 사용자가 원하는 이름으로 설정하고, (참고 : Clone Name은 패키지에 관련된 이름으로 써서 다른 폴더들과 구별 지을 것) Checkout Branch는 `master*` 로 설정하고, Remote Name은 origin으로 설정한 후 Finish를 누릅니다.
 
-7. 사용자의 catkin_ws/src 위치에 Step5에서 설정한 Clone Name 을 갖는 폴더가 있는지 확인하고, 폴더 내부에 패키지 구성 파일들(world 폴더, src 폴더, launch 폴더 등)과 model 폴더(=`rok3_model`)이 있는지 확인합니다.
+7. 사용자의 catkin_ws/src 위치에 Step5에서 설정한 Clone Name 을 갖는 폴더가 있는지 확인하고, 폴더 내부에 패키지 구성 파일들(world 폴더, src 폴더, launch 폴더 등)과 model 압축파일 (=`[Model]RB1_500e.tar.xz`)이 있는지 확인합니다.
 
-8. `rok3_model` 폴더를 `HOME/.gazebo/models/` 폴더로 가져와서 시뮬레이션을 위한 파일 셋팅을 마무리합니다.  
+8. `[Model]RB1_500e.tar.xz` 파일을 압축 푼뒤에 `[Model]RB1_500e`폴더 안에 있는 `RB1_500e`를 `HOME/.gazebo/models/` 폴더로 가져와서 시뮬레이션을 위한 파일 셋팅을 마무리합니다.  
 ***(`.gazebo` 폴더가 보이지 않으면,  Home 폴더에서, `Ctrl+H` 를 눌러서 폴더 숨김 해제를 할 것)***  
 ***(Gazebo를 실행한 적이 없는 경우, 숨김해제를 하여도 폴더가 보이지 않을 수 있음. Terminal 에서 `gazebo`를 입력하여 한번 실행해준 후 다시 확인할 것)***
          
