@@ -227,89 +227,30 @@ sudo make install
 ### 3.How to run RobotControl2023 package
 #### **!! 시뮬레이션 실행 전에 확인 해야하거나 셋팅 !!**
 
-* #### Setting for Fixed / Floating Dynamics
-
-`HOME/.gazebo/models/rok3_model`폴더에 있는 `model.sdf`를 엽니다. 그리고 Fixed / Floating Dynamics을 위해 `<fixed to world>`의 joint를 다음과 같이 셋팅 합니다.
-
-**Setting Floating Dynamics in `model.sdf`**
-``` js
-<?xml version="1.0"?>
-<sdf version='1.6'>
-  <model name='rok3_model'>
-  <!--joint name="fixed to world" type="fixed">
-      <parent>world</parent>
-      <child>base_link</child>
-    </joint-->
-.
-.
-.
-  </model>
-</sdf>
-```
-
-
-**Setting Fixed Dynamics in `model.sdf`**
-``` js
-<?xml version="1.0"?>
-<sdf version='1.6'>
-  <model name='rok3_model'>
-  <joint name="fixed to world" type="fixed">
-      <parent>world</parent>
-      <child>base_link</child>
-    </joint>
-.
-.
-.
-  </model>
-</sdf>
-```
-
-다음으로, `catkin_ws/src/RobotControl2023/worlds`폴더에 있는 `rok3.world`를 엽니다. 그리고 Fixed / Floating Dynamics을 위해 모델의 `<pose frame>`을 다음과 같이 셋팅 합니다.
-
-**Setting Floating Dynamics in `rok3.world`**
+**Setting Floating Dynamics in `rb1_500e.world`**
 ``` js
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <world name="rok3">
+  <world name="rb1_500e">
 .
 .
 .
     <include>
-      <uri>model://rok3_model</uri>
-      <pose frame=''>0 0 0.947 0 0 0</pose>
-      <plugin name="rok3_plugin" filename="librok3_pkgs.so"/> 
+      <uri>model://RB1_500e</uri>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <plugin name="main" filename="librb1_500e_study.so"/> 
     </include>
   </world>
 </sdf>
 ```
 
+* #### Check `model.urdf` file path for using RBDL in `main.cpp`
+* `main.cpp`는 Gazebo main code 이며, `/catkin_ws/src/RobotControl2023/src`에 있습니다.
+* **그리고, `main.cpp`에서 사용자는 반드시 `Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)`함수에서, 아래 코드 예시와 같이 `Addons::URDFReadFromFile()` 함수 안에 적용되어 있는 `RB1_500e.urdf`의 경로를 확인해주시고, 틀린다면 바로잡아주시기 바랍니다.**
 
-**Setting Fixed Dynamics in `rok3.world`**
-``` js
-<?xml version="1.0" ?>
-<sdf version="1.6">
-  <world name="rok3">
-.
-.
-.
-    <include>
-      <uri>model://rok3_model</uri>
-      <pose frame=''>0 0 1.947 0 0 0</pose>
-      <plugin name="rok3_plugin" filename="librok3_pkgs.so"/> 
-    </include>
-  </world>
-</sdf>
-```
+* **`RB1_500e.urdf`는 `/home/user_name/catkin_ws/src/RobotControl2023/urdf` 폴더에 있으며, 파일 속성 확인을 통해 정확한 경로 확인하시기 바랍니다.**  
 
-
-* #### Check `model.urdf` file path for using RBDL in `rok3_plugin.cc`
-* `rok3_plugin.cc`는 Gazebo main code 이며, `/catkin_ws/src/RobotControl2023/src`에 있습니다.
-* **그리고, `rok3_plugin.cc`에서 사용자는 반드시 `Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)`함수에서, 아래 코드 예시와 같이 `Addons::URDFReadFromFile()` 함수 안에 적용되어 있는 `rok3_model.urdf`의 경로를 확인해주시고, 틀린다면 바로잡아주시기 바랍니다.**
-
-* **`rok3_model.urdf`는 `home/.gazebo/models/rok3_model/urdf` 폴더에 있으며, 파일 속성 확인을 통해 정확한 경로 확인하시기 바랍니다.**  
-`rok3_model.sdf` 파일 오른쪽 클릭 -> `Properties` -> `Location` 확인
-
-**In `rok3_plugin.cc`**
+**In `main.cpp`**
 ``` js
 void gazebo::rok3_plugin::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
 {
