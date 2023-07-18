@@ -15,12 +15,12 @@
 
 ## What to do before simulation 
 1. Install ubuntu 20.04 and ROK-Noetic.
-   - [ROS-Kinetic](http://wiki.ros.org/noetic/Installation/Ubuntu) install, link : http://wiki.ros.org/noetic/Installation/Ubuntu
+   - [ROS-Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu) install, link : http://wiki.ros.org/noetic/Installation/Ubuntu
 2. Normally, when you install the ROS-noetic, Gazebo, which version is 11, is installed.
    However, If you want to find the extra information for Gazebo simulator, click the links below.
    - [Gazeobo-11](https://classic.gazebosim.org/tutorials?tut=install_ubuntu) install, link : https://classic.gazebosim.org/tutorials?tut=install_ubuntu
-3. 
-[Netbeans-IDE](https://netbeans.apache.org/download/index.html) install, link : https://netbeans.apache.org/download/index.html
+3. Install IDE (Intergrated Development Environment)
+   - [Netbeans-IDE](https://netbeans.apache.org/download/index.html) install, link : https://netbeans.apache.org/download/index.html
 
 > **Java install before Netbeans install**
 * terminal
