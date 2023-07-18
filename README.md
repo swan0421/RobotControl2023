@@ -2,7 +2,7 @@
 
 
 #### Gazebo Simulation for RB1_500e.
-본 패키지는 휴머노이드 로봇 RB1_500e의 교육용 Gazebo Simulation 입니다.
+본 패키지는 협동 로봇 RB1_500e의 교육용 Gazebo Simulation 입니다.
 이 문서는 패키지의 설명 문서이며, 구성은 다음과 같습니다.
 
 * What to do before simulation
