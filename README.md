@@ -326,7 +326,7 @@ cd ~/catkin_ws && catkin_make
 **최종적으로, 다음과 같은 명령어를 통해 시뮬레이션 실행**
 
 ```
-roslaunch rok3_study_pkgs rok3.launch
+roslaunch rb1_500e_study rb1_500e.launch
 ```
 
 ## 1. 실습 1 : 3-Link Planar Arm의 Forward Kinematics
