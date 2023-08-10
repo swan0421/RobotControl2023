@@ -315,7 +315,7 @@ void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
 
 }
 ```
-* 코드 내에 이 함수 안에 `RB1_500e_MODEL_DIR`가 URDF의 경로를 나타내도록 define해놓았습니다. 이것의 선언부에 들어가시면 다음과 같이 urdf의 위치가 셋팅되어있습니다. 이것을 본인 환경에 맞게 수정하시면 됩니다.
+* 코드 내에 `Addons::URDFReadFromFile()` 함수 안에 `RB1_500e_MODEL_DIR`가 URDF의 경로를 나타내도록 define해놓았습니다. 이것의 선언부에 들어가시면 다음과 같이 urdf의 위치가 셋팅되어있습니다. 이것을 본인 환경에 맞게 수정하시면 됩니다.
 ``` js
 #define RB1_500e_MODEL_DIR "/home/js/catkin_ws/src/RobotControl2023/urdf/RB1_500e.urdf"
 ```
