@@ -247,7 +247,6 @@ sudo make install
 * #### Check `model.urdf` file path for using RBDL in `main.cpp`
 * `main.cpp`는 Gazebo main code 이며, `/catkin_ws/src/RobotControl2023/src`에 있습니다.
 * **그리고, `main.cpp`에서 사용자는 반드시 `Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)`함수에서, 아래 코드 예시와 같이 `Addons::URDFReadFromFile()` 함수 안에 적용되어 있는 `RB1_500e.urdf`의 경로를 확인해주시고, 틀린다면 바로잡아주시기 바랍니다.**
-
 * **`RB1_500e.urdf`는 `/home/user_name/catkin_ws/src/RobotControl2023/urdf` 폴더에 있으며, 파일 속성 확인을 통해 정확한 경로 확인하시기 바랍니다.**  
 
 **In `main.cpp`**
@@ -315,6 +314,10 @@ void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
     this->update_connection_ = event::Events::ConnectWorldUpdateBegin(boost::bind(&RB1_500E::UpdateAlgorithm, this));
 
 }
+```
+* **코드 내에 이 함수 안에 `RB1_500e_MODEL_DIR`가 URDF의 경로를 나타내도록 define해놓았습니다. 이것의 선언부에 들어가시면 다음과 같이 urdf의 위치가 셋팅되어있습니다. 이것을 본인 환경에 맞게 수정하시면 됩니다.
+``` js
+#define RB1_500e_MODEL_DIR "/home/js/catkin_ws/src/RobotControl2023/urdf/RB1_500e.urdf"
 ```
 
 **모든 준비 과정이 끝나면, `catkin_make`을 입력하여 컴파일을 진행합니다.**
