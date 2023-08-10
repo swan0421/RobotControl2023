@@ -12,6 +12,12 @@ RB1_500E _rb;
 
 void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
 {
+    /*
+     * Loading model data and initializing the system before simulation 
+     */
+
+    //* model.sdf file based model data input to [physics::ModelPtr model] for gazebo simulation
+
     int argc = 0;
     char** argv = NULL;
     ros::init(argc, argv, "RB1_500E");
@@ -55,12 +61,15 @@ void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
 
         last_update_time = model->GetWorld()->SimTime();
     #endif
+    
+    //* RBDL setting
     printf("\n RBDL load start \n");
     Addons::URDFReadFromFile(RB1_500e_MODEL_DIR, _rb.rb1_500e_model, false, false);
     _rb.rb1_500e_model->gravity = Vector3d(0., 0., -9.81);
 
     printf("\n RBDL load Complete \n");
-   
+    
+    //* setting for getting dt
     this->update_connection_ = event::Events::ConnectWorldUpdateBegin(boost::bind(&RB1_500E::UpdateAlgorithm, this));
 
 }

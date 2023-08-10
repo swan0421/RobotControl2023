@@ -252,39 +252,67 @@ sudo make install
 
 **In `main.cpp`**
 ``` js
-void gazebo::rok3_plugin::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
+void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
 {
     /*
      * Loading model data and initializing the system before simulation 
      */
 
     //* model.sdf file based model data input to [physics::ModelPtr model] for gazebo simulation
-    model = _model;
 
-    //* [physics::ModelPtr model] based model update
-    GetJoints();
+    int argc = 0;
+    char** argv = NULL;
+    ros::init(argc, argv, "RB1_500E");
+    ROS_INFO("PLUGIN_LOADED");
 
+    printf("\n Loading Complete \n");
+    
+    this->model = _model;
 
+    #if GazeboVersion < 8
+        this->BASE_LINK = this->model->GetLink("BASE_LINK");
+        this->LINK1 = this->model->GetLink("LINK1");
+        this->LINK2 = this->model->GetLink("LINK2");
+        this->LINK3 = this->model->GetLink("LINK3");
+        this->LINK4 = this->model->GetLink("LINK4");
+        this->LINK5 = this->model->GetLink("LINK5");
+        this->LINK6 = this->model->GetLink("LINK6");
+        
+        this->JT0 = this->model->GetJoint("JT0");
+        this->JT1 = this->model->GetJoint("JT1");
+        this->JT2 = this->model->GetJoint("JT2");
+        this->JT3 = this->model->GetJoint("JT3");
+        this->JT4 = this->model->GetJoint("JT4");
+        this->JT5 = this->model->GetJoint("JT5");
+        this->last_update_time = this->model->GetWorld()->GetSimTime();
+    #else
+        BASE_LINK = this->model->GetLink("BASE_LINK");
+        LINK1 = this->model->GetLink("LINK1");
+        LINK2 = this->model->GetLink("LINK2");
+        LINK3 = this->model->GetLink("LINK3");
+        LINK4 = this->model->GetLink("LINK4");
+        LINK5 = this->model->GetLink("LINK5");
+        LINK6 = this->model->GetLink("LINK6");
+        
+        JT0 = this->model->GetJoint("JT0");
+        JT1 = this->model->GetJoint("JT1");
+        JT2 = this->model->GetJoint("JT2");
+        JT3 = this->model->GetJoint("JT3");
+        JT4 = this->model->GetJoint("JT4");
+        JT5 = this->model->GetJoint("JT5");
 
-    //* RBDL API Version Check
-    int version_test;
-    version_test = rbdl_get_api_version();
-    printf(C_GREEN "RBDL API version = %d\n" C_RESET, version_test);
+        last_update_time = model->GetWorld()->SimTime();
+    #endif
+    
+    //* RBDL setting
+    printf("\n RBDL load start \n");
+    Addons::URDFReadFromFile(RB1_500e_MODEL_DIR, _rb.rb1_500e_model, false, false);
+    _rb.rb1_500e_model->gravity = Vector3d(0., 0., -9.81);
 
-    //* model.urdf file based model data input to [Model* rok3_model] for using RBDL
-    Model* rok3_model = new Model();
-    Addons::URDFReadFromFile("/root/.gazebo/models/rok3_model/urdf/rok3_model.urdf", rok3_model, true, true);
-    //↑↑↑ Check File Path ↑↑↑
-    nDoF = rok3_model->dof_count - 6; // Get degrees of freedom, except position and orientation of the robot
-    joint = new ROBO_JOINT[nDoF]; // Generation joint variables struct
-
-    //* initialize and setting for robot control in gazebo simulation
-    SetJointPIDgain();
-
-
+    printf("\n RBDL load Complete \n");
+    
     //* setting for getting dt
-    last_update_time = model->GetWorld()->GetSimTime();
-    update_connection = event::Events::ConnectWorldUpdateBegin(boost::bind(&rok3_plugin::UpdateAlgorithm, this));
+    this->update_connection_ = event::Events::ConnectWorldUpdateBegin(boost::bind(&RB1_500E::UpdateAlgorithm, this));
 
 }
 ```
