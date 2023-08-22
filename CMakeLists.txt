@@ -17,7 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
 # RBDL and EIGEN setting
 find_package(RBDL REQUIRED)
 find_package(Eigen3 3.0.0 REQUIRED)
-
 find_package(gazebo REQUIRED)
 FIND_PACKAGE(Boost REQUIRED COMPONENTS ${BOOST_BUILD_COMPONENTS})
 
@@ -27,7 +26,6 @@ include_directories(
   ${Boost_INCLUDE_DIR} 
   ${catkin_INCLUDE_DIRS} 
   ${GAZEBO_INCLUDE_DIRS} 
-  ${PCL_LIBRARY_DIRS} 
   ${RBDL_INCLUDE_DIR} 
   ${EIGEN3_INCLUDE_DIR}
 )
@@ -35,8 +33,7 @@ include_directories(
 ## Declare a C++ library
 SET(${PROJECT_NAME}_HEADERS
   
-  src/main.h
-  
+  src/main.h 
 
 )
 LIST(REMOVE_DUPLICATES ${PROJECT_NAME}_HEADERS)
@@ -53,12 +50,9 @@ target_link_libraries(${PROJECT_NAME} ${RBDL_LIBRARY} ${RBDL_URDFReader_LIBRARY}
 target_link_libraries(${PROJECT_NAME} ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
 
 catkin_package(
-  INCLUDE_DIRS include
   LIBRARIES rb1_500e_study
   CATKIN_DEPENDS gazebo_ros roscpp rospy std_msgs
   DEPENDS system_lib
 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
-
-
