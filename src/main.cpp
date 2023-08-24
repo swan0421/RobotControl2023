@@ -105,12 +105,18 @@ void gazebo::RB1_500E::UpdateAlgorithm()
     dt = current_time.Double() - this->last_update_time.Double();
     time = time + dt;
 
-    _rb.des_q[0] = 0.0; _rb.des_q[1] = 0.0; _rb.des_q[2] = 0.0;
+    // _rb.des_q[0] = 0.0; _rb.des_q[1] = 0.0; _rb.des_q[2] = 0.0;
+    // _rb.des_q[3] = -0.0; _rb.des_q[4] = -0.0; _rb.des_q[5] = -0.0;
+
+    _rb.des_q[0] = 10.0; _rb.des_q[1] = 10.0; _rb.des_q[2] = 0.0;
     _rb.des_q[3] = -0.0; _rb.des_q[4] = -0.0; _rb.des_q[5] = -0.0;
 
     // step input //
     _rb.kp[0] = 20; _rb.kp[1] = 30; _rb.kp[2] = 30;
     _rb.kp[3] = 20; _rb.kp[4] = 20; _rb.kp[5] = 10;
+
+    _rb.kp[0] = 0.5; _rb.kp[1] = 0.5; _rb.kp[2] = 0.1;
+    _rb.kp[3] = 0.1; _rb.kp[4] = 0.1; _rb.kp[5] = 0.1;
     
     for(int i = 0; i < NUM_OF_MC; i++)
     {
@@ -118,12 +124,12 @@ void gazebo::RB1_500E::UpdateAlgorithm()
         _rb.tau[i] = _rb.kp[i]*(_rb.des_q[i]*D2R - _rb.enc_q[i]) + 0.1*(0.0 - _rb.enc_Dq[i]);
     }
 
-    this->JT0 -> SetForce(2, _rb.tau[0]); //setForce(axis,Force value)
-    this->JT1 -> SetForce(1, _rb.tau[1]);
-    this->JT2 -> SetForce(1, _rb.tau[2]);
-    this->JT3 -> SetForce(2, _rb.tau[3]);
-    this->JT4 -> SetForce(1, _rb.tau[4]);
-    this->JT5 -> SetForce(2, _rb.tau[5]);
+    this->JT0 -> SetForce(2, _rb.tau[0] + _rb.tau_nlt[0]); //setForce(axis,Force value)
+    this->JT1 -> SetForce(1, _rb.tau[1] + _rb.tau_nlt[1]);
+    this->JT2 -> SetForce(1, _rb.tau[2] + _rb.tau_nlt[2]);
+    this->JT3 -> SetForce(2, _rb.tau[3] + _rb.tau_nlt[3]);
+    this->JT4 -> SetForce(1, _rb.tau[4] + _rb.tau_nlt[4]);
+    this->JT5 -> SetForce(2, _rb.tau[5] + _rb.tau_nlt[5]);
 
     gazebo::RB1_500E::print_task();
    
@@ -137,7 +143,21 @@ void gazebo::RB1_500E::GET_RB_INFO(void)
         _rb.enc_Dq[i] = (_rb.enc_q[i] - _rb.p_enc_q[i])/0.001;
 
         _rb.p_enc_q[i] = _rb.enc_q[i];
+
+        rb.q(i) = _rb.enc_q[i];
+        rb.Dq(i) = _rb.enc_Dq[i];
     }
+    // Calculate inverse dynamics
+    VectorNd nlt = VectorNd::Zero(_rb.rb1_500e_model->dof_count);
+    NonlinearEffects(*_rb.rb1_500e_model, rb.q, rb.Dq, nlt);
+
+
+    for(int i = 0; i < NUM_OF_MC; i++)
+    {
+        _rb.tau_nlt[i] = nlt(i);
+    }
+    
+
 
 }
 void gazebo::RB1_500E::print_task(void)

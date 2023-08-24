@@ -141,13 +141,15 @@ namespace gazebo
 
 
         public:
-        float enc_q[6];
-        float p_enc_q[6] = {0.0, };
-        float enc_Dq[6] = {0.0, };
-        float des_q[6];
-        float tau[6];
+        float enc_q[NUM_OF_MC];
+        float p_enc_q[NUM_OF_MC] = {0.0, };
+        float enc_Dq[NUM_OF_MC] = {0.0, };
+        float des_q[NUM_OF_MC];
+        float tau[NUM_OF_MC];
+        float tau_nlt[NUM_OF_MC];
 
-        float kp[6];
+        float kp[NUM_OF_MC];
+        float kd[NUM_OF_MC];
 
         // RBDL
         RigidBodyDynamics::Model* rb1_500e_model = new Model();
