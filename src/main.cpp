@@ -108,7 +108,7 @@ void gazebo::RB1_500E::UpdateAlgorithm()
     // _rb.des_q[0] = 0.0; _rb.des_q[1] = 0.0; _rb.des_q[2] = 0.0;
     // _rb.des_q[3] = -0.0; _rb.des_q[4] = -0.0; _rb.des_q[5] = -0.0;
 
-    _rb.des_q[0] = 10.0; _rb.des_q[1] = 10.0; _rb.des_q[2] = 0.0;
+    _rb.des_q[0] = 0.0; _rb.des_q[1] = 0.0; _rb.des_q[2] = 0.0;
     _rb.des_q[3] = -0.0; _rb.des_q[4] = -0.0; _rb.des_q[5] = -0.0;
 
     // step input //
