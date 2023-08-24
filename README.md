@@ -332,7 +332,7 @@ cd ~/catkin_ws && catkin_make
 roslaunch rb1_500e_study rb1_500e.launch
 ```
 
-## 1. 실습 1 : 3-Link Planar Arm의 Forward Kinematics
+<!-- ## 1. 실습 1 : 3-Link Planar Arm의 Forward Kinematics
 
 * void Practice() 함수 만들기
 ```c
@@ -699,4 +699,4 @@ double func_1_cos(double t, double, init, double final, double T)
 6. 두발 지지 (Cartesian Coordinates)
 
 ### 과제
-* 땅에서 실습 7 수행하기 -->
+* 땅에서 실습 7 수행하기 --> -->
