@@ -23,7 +23,7 @@ void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
     ros::init(argc, argv, "RB1_500E");
     ROS_INFO("PLUGIN_LOADED");
 
-    printf("\n Loading Complete \n");
+    // printf("\n Loading Complete \n");
     
     this->model = _model;
 
@@ -63,14 +63,16 @@ void gazebo::RB1_500E::Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/)
     #endif
     
     //* RBDL setting
-    printf("\n RBDL load start \n");
-    Addons::URDFReadFromFile(RB1_500e_MODEL_DIR, _rb.rb1_500e_model, false, false);
-    _rb.rb1_500e_model->gravity = Vector3d(0., 0., -9.81);
+    // printf("\n RBDL load start \n");
+    // Addons::URDFReadFromFile(RB1_500e_MODEL_DIR, _rb.rb1_500e_model, false, false);
+    // _rb.rb1_500e_model->gravity = Vector3d(0., 0., -9.81);
 
-    printf("\n RBDL load Complete \n");
+    // printf("\n RBDL load Complete \n");
     
     //* setting for getting dt
     this->update_connection_ = event::Events::ConnectWorldUpdateBegin(boost::bind(&RB1_500E::UpdateAlgorithm, this));
+
+    printf("\n System load complete \n");
 
 }
 
@@ -147,15 +149,16 @@ void gazebo::RB1_500E::GET_RB_INFO(void)
         rb.q(i) = _rb.enc_q[i];
         rb.Dq(i) = _rb.enc_Dq[i];
     }
+
     // Calculate inverse dynamics
-    VectorNd nlt = VectorNd::Zero(_rb.rb1_500e_model->dof_count);
-    NonlinearEffects(*_rb.rb1_500e_model, rb.q, rb.Dq, nlt);
+    // VectorNd nlt = VectorNd::Zero(_rb.rb1_500e_model->dof_count);
+    // NonlinearEffects(*_rb.rb1_500e_model, rb.q, rb.Dq, nlt);
 
 
-    for(int i = 0; i < NUM_OF_MC; i++)
-    {
-        _rb.tau_nlt[i] = nlt(i);
-    }
+    // for(int i = 0; i < NUM_OF_MC; i++)
+    // {
+    //     _rb.tau_nlt[i] = nlt(i);
+    // }
     
 
 
@@ -179,141 +182,4 @@ void gazebo::RB1_500E::print_task(void)
         // std::cout << PF_CR_BL "T01(0): " << std::endl << _rb.jointToTransform01(_rb.enc_q_vec)<< PF_NC << std::endl;
     }
     
-}
-MatrixXd gazebo::RB1_500E::jointToTransform01(VectorXd q)
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0, 156.8*0.001);
-    double _q = q(0);
-
-    tmp_m(0,0) = 1;     tmp_m(0,1) = 0;          tmp_m(0,2) = 0;          tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;     tmp_m(1,1) = cos(_q);    tmp_m(1,2) = -sin(_q);   tmp_m(1,3) = r(1);
-    tmp_m(2,0) = 0;     tmp_m(2,1) = sin(_q);    tmp_m(2,2) = cos(_q);    tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;     tmp_m(3,1) = 0;          tmp_m(3,2) = 0;          tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-MatrixXd gazebo::RB1_500E::jointToTransform12(VectorXd q)
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0, 0);
-    double _q = q(1);
-
-    tmp_m(0,0) = cos(_q);    tmp_m(0,1) = 0;     tmp_m(0,2) = sin(_q);    tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;          tmp_m(1,1) = 1;     tmp_m(1,2) = 0;          tmp_m(1,3) = r(1);
-    tmp_m(2,0) = -sin(_q);   tmp_m(2,1) = 0;     tmp_m(2,2) = cos(_q);    tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;          tmp_m(3,1) = 0;     tmp_m(3,2) = 0;          tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-MatrixXd gazebo::RB1_500E::jointToTransform23(VectorXd q)
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0, 180.0*0.001);
-    double _q = q(2);
-
-    tmp_m(0,0) = cos(_q);    tmp_m(0,1) = 0;     tmp_m(0,2) = sin(_q);    tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;          tmp_m(1,1) = 1;     tmp_m(1,2) = 0;          tmp_m(1,3) = r(1);
-    tmp_m(2,0) = -sin(_q);   tmp_m(2,1) = 0;     tmp_m(2,2) = cos(_q);    tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;          tmp_m(3,1) = 0;     tmp_m(3,2) = 0;          tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-MatrixXd gazebo::RB1_500E::jointToTransform34(VectorXd q)
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0, 0);
-    double _q = q(3);
-
-    tmp_m(0,0) = 1;     tmp_m(0,1) = 0;          tmp_m(0,2) = 0;          tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;     tmp_m(1,1) = cos(_q);    tmp_m(1,2) = -sin(_q);   tmp_m(1,3) = r(1);
-    tmp_m(2,0) = 0;     tmp_m(2,1) = sin(_q);    tmp_m(2,2) = cos(_q);    tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;     tmp_m(3,1) = 0;          tmp_m(3,2) = 0;          tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-MatrixXd gazebo::RB1_500E::jointToTransform45(VectorXd q)
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0.0, 219.85*0.001);
-    double _q = q(4);
-
-    tmp_m(0,0) = cos(_q);    tmp_m(0,1) = 0;     tmp_m(0,2) = sin(_q);    tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;          tmp_m(1,1) = 1;     tmp_m(1,2) = 0;          tmp_m(1,3) = r(1);
-    tmp_m(2,0) = -sin(_q);   tmp_m(2,1) = 0;     tmp_m(2,2) = cos(_q);    tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;          tmp_m(3,1) = 0;     tmp_m(3,2) = 0;          tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-MatrixXd gazebo::RB1_500E::jointToTransform56(VectorXd q)
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0, 0);
-    double _q = q(5);
-
-    tmp_m(0,0) = 1;     tmp_m(0,1) = 0;          tmp_m(0,2) = 0;          tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;     tmp_m(1,1) = cos(_q);    tmp_m(1,2) = -sin(_q);   tmp_m(1,3) = r(1);
-    tmp_m(2,0) = 0;     tmp_m(2,1) = sin(_q);    tmp_m(2,2) = cos(_q);    tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;     tmp_m(3,1) = 0;          tmp_m(3,2) = 0;          tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-MatrixXd gazebo::RB1_500E::jointToTransform6E()
-{
-    MatrixXd tmp_m(4,4);
-    Eigen::Vector3d r(0, 0, 107.6*0.001);
-    
-    tmp_m(0,0) = 1;     tmp_m(0,1) = 0;     tmp_m(0,2) = 0;     tmp_m(0,3) = r(0);
-    tmp_m(1,0) = 0;     tmp_m(1,1) = 1;     tmp_m(1,2) = 0;     tmp_m(1,3) = r(1);
-    tmp_m(2,0) = 0;     tmp_m(2,1) = 0;     tmp_m(2,2) = 1;     tmp_m(2,3) = r(2);
-    tmp_m(3,0) = 0;     tmp_m(3,1) = 0;     tmp_m(3,2) = 0;     tmp_m(3,3) = 1;
-
-    return tmp_m;
-}
-VectorXd gazebo::RB1_500E::jointToPosVec(VectorXd q)
-{
-    VectorXd tmp_v = VectorXd::Zero(3);
-    MatrixXd tmp_m(4,4);
-    
-    tmp_m = jointToTransform01(q)* 
-            jointToTransform12(q)* 
-            jointToTransform23(q)* 
-            jointToTransform34(q)* 
-            jointToTransform45(q)* 
-            jointToTransform56(q)* 
-            jointToTransform6E();
-        
-    tmp_v = tmp_m.block(0,3,3,1);
-    
-    return tmp_v;    
-}
-MatrixXd gazebo::RB1_500E::jointToRotMat(VectorXd q)
-{
-    MatrixXd tmp_m(3,3);
-    MatrixXd T_IE(4,4);
-    
-    T_IE = jointToTransform01(q)* 
-           jointToTransform12(q)* 
-           jointToTransform23(q)* 
-           jointToTransform34(q)* 
-           jointToTransform45(q)* 
-           jointToTransform56(q)* 
-           jointToTransform6E();
-        
-    tmp_m = T_IE.block(0,0,3,3);
-    
-    return tmp_m;    
-}
-VectorXd gazebo::RB1_500E::rotMatToEuler(MatrixXd rot)
-{
-    // ZYX Euler Angle - yaw-pitch-roll
-    VectorXd tmp_v(3);
-
-    tmp_v(0) = atan2(rot(1,0),rot(0,0));
-    tmp_v(1) = atan2(-rot(2,0),sqrt(rot(2,1)*rot(2,1)+rot(2,2)*rot(2,2)));
-    tmp_v(2) = atan2(rot(2,1),rot(2,2));
-
-    std::cout << tmp_v << endl;
-
-    return tmp_v; 
 }
