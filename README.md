@@ -1,4 +1,4 @@
-# [2023-1] Robot Control 실습
+# [2023-2] Robot Control 실습
 
 
 #### Gazebo Simulation for RB1_500e.
