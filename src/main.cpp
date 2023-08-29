@@ -114,24 +114,23 @@ void gazebo::RB1_500E::UpdateAlgorithm()
     _rb.des_q[3] = -0.0; _rb.des_q[4] = -0.0; _rb.des_q[5] = -0.0;
 
     // step input //
-    _rb.kp[0] = 20; _rb.kp[1] = 30; _rb.kp[2] = 30;
-    _rb.kp[3] = 20; _rb.kp[4] = 20; _rb.kp[5] = 10;
+    _rb.kp[0] = 20; _rb.kp[1] = 50; _rb.kp[2] = 50;
+    _rb.kp[3] = 30; _rb.kp[4] = 30; _rb.kp[5] = 10;
 
-    _rb.kp[0] = 0.5; _rb.kp[1] = 0.5; _rb.kp[2] = 0.1;
-    _rb.kp[3] = 0.1; _rb.kp[4] = 0.1; _rb.kp[5] = 0.1;
+    _rb.kd[0] = 0.5; _rb.kd[1] = 0.5; _rb.kd[2] = 0.1;
+    _rb.kd[3] = 0.1; _rb.kd[4] = 0.1; _rb.kd[5] = 0.1;
     
     for(int i = 0; i < NUM_OF_MC; i++)
     {
-        // _rb.tau[i] = _rb.kp[i]*(_rb.des_q[i]*D2R - _rb.enc_q[i]);
-        _rb.tau[i] = _rb.kp[i]*(_rb.des_q[i]*D2R - _rb.enc_q[i]) + 0.1*(0.0 - _rb.enc_Dq[i]);
+        _rb.tau[i] = _rb.kp[i]*(_rb.des_q[i]*D2R - _rb.enc_q[i]) + _rb.kd[i]*(0.0 - _rb.enc_Dq[i]);
     }
 
-    this->JT0 -> SetForce(2, _rb.tau[0] + _rb.tau_nlt[0]); //setForce(axis,Force value)
-    this->JT1 -> SetForce(1, _rb.tau[1] + _rb.tau_nlt[1]);
-    this->JT2 -> SetForce(1, _rb.tau[2] + _rb.tau_nlt[2]);
-    this->JT3 -> SetForce(2, _rb.tau[3] + _rb.tau_nlt[3]);
-    this->JT4 -> SetForce(1, _rb.tau[4] + _rb.tau_nlt[4]);
-    this->JT5 -> SetForce(2, _rb.tau[5] + _rb.tau_nlt[5]);
+    this->JT0 -> SetForce(2, _rb.tau[0]); //setForce(axis,Force value)
+    this->JT1 -> SetForce(1, _rb.tau[1]);
+    this->JT2 -> SetForce(1, _rb.tau[2]);
+    this->JT3 -> SetForce(2, _rb.tau[3]);
+    this->JT4 -> SetForce(1, _rb.tau[4]);
+    this->JT5 -> SetForce(2, _rb.tau[5]);
 
     gazebo::RB1_500E::print_task();
    
@@ -169,15 +168,15 @@ void gazebo::RB1_500E::print_task(void)
 
     if(PRINT_CNT%150 == 0)
     {
-        std::cout << PF_CR_R "JT.0: " << _rb.enc_q[0]*R2D << " , JT.1: " << _rb.enc_q[1]*R2D << " , JT.2: " << _rb.enc_q[2]*R2D << PF_NC << std::endl;
-        std::cout << PF_CR_R "JT.3: " << _rb.enc_q[3]*R2D << " , JT.4: " << _rb.enc_q[4]*R2D << " , JT.5: " << _rb.enc_q[5]*R2D << PF_NC << std::endl << std::endl;
+        std::cout << PF_CR_bGR "JT.0: " << _rb.enc_q[0]*R2D << " , JT.1: " << _rb.enc_q[1]*R2D << " , JT.2: " << _rb.enc_q[2]*R2D << PF_NC << std::endl;
+        std::cout << PF_CR_bGR "JT.3: " << _rb.enc_q[3]*R2D << " , JT.4: " << _rb.enc_q[4]*R2D << " , JT.5: " << _rb.enc_q[5]*R2D << PF_NC << std::endl << std::endl;
 
-        std::cout << PF_CR_R "dJT.0: " << _rb.enc_Dq[0] << " , dJT.1: " << _rb.enc_Dq[1] << " , dJT.2: " << _rb.enc_Dq[2] << PF_NC << std::endl;
-        std::cout << PF_CR_R "dJT.3: " << _rb.enc_Dq[3] << " , dJT.4: " << _rb.enc_Dq[4] << " , dJT.5: " << _rb.enc_Dq[5] << PF_NC << std::endl << std::endl;
+        std::cout << PF_CR_bGR "dJT.0: " << _rb.enc_Dq[0] << " , dJT.1: " << _rb.enc_Dq[1] << " , dJT.2: " << _rb.enc_Dq[2] << PF_NC << std::endl;
+        std::cout << PF_CR_bGR "dJT.3: " << _rb.enc_Dq[3] << " , dJT.4: " << _rb.enc_Dq[4] << " , dJT.5: " << _rb.enc_Dq[5] << PF_NC << std::endl << std::endl;
 
 
-        std::cout << PF_CR_R "Tau.0: " << _rb.tau[0] << " , Tau.1: " << _rb.tau[1] << " , Tau.2: " << _rb.tau[2] << PF_NC << std::endl;
-        std::cout << PF_CR_R "Tau.3: " << _rb.tau[3] << " , Tau.4: " << _rb.tau[4] << " , Tau.5: " << _rb.tau[5] << PF_NC << std::endl << std::endl;
+        std::cout << PF_CR_bGR "Tau.0: " << _rb.tau[0] << " , Tau.1: " << _rb.tau[1] << " , Tau.2: " << _rb.tau[2] << PF_NC << std::endl;
+        std::cout << PF_CR_bGR "Tau.3: " << _rb.tau[3] << " , Tau.4: " << _rb.tau[4] << " , Tau.5: " << _rb.tau[5] << PF_NC << std::endl << std::endl;
 
         // std::cout << PF_CR_BL "T01(0): " << std::endl << _rb.jointToTransform01(_rb.enc_q_vec)<< PF_NC << std::endl;
     }
