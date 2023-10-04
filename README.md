@@ -45,6 +45,7 @@
 ##### **2. Apache NetBeans 13 IDE install Guide**
 
 1. [NetBeans 13_linux install](https://www.apache.org/dyn/closer.cgi/netbeans/netbeans-installers/13/Apache-NetBeans-13-bin-linux-x64.sh) 링크로 접속 합니다.
+(참고 링크: https://netbeans.apache.org/download/nb13/nb13.html)
 
 2. HTTP 하단의 링크를 클릭하여 .sh 파일을 다운로드 받습니다.  
 .sh 파일의 다운로드 경로는 `/home/user_name/Downloads` 로 설정합니다.  
@@ -69,6 +70,25 @@
 3. Plugins창이 뜨면, Settings 카테고리로 들어가서, **NetBeans 8.2 Plugin Portal 의 Active**에 체크한 후, **Available Plugins** 카테고리로 들어가 **check for Newest** 를 클릭하여 업데이트를 진행해 줍니다.
 
 4. 업데이트를 진행 후 나타나는 c/c++ 에 install 을 체크하고 하단의 install 버튼을 클릭하여 설치를 진행합니다.  
+
+##### **(new)3-1.Apache NetBeans 16 Setting**
+1. NetBeans 13 setting의 다운로드 및 github 연동 문제가 있어 Netbeans 16 버전을 셋팅합니다.
+
+2. Java install (11이상 버전 필요)
+* terminal
+> ```
+> sudo apt update
+> sudo apt install openjdk-11-jdk
+> java -version
+> ```
+
+3. NetBeans download page 접속(해당 링크: https://netbeans.apache.org/download/nb16/index.html).
+   - 해당 링크에서 apache-betbeans_16-1_all.deb 파일을 다운로드 폴더에 다운 받습니다.
+   - deb 파일 설치 방법
+   > ```
+   > sudo dpkg -i packge_file_name.deb
+   > ```
+
 
 ##### **4. Create New Project**
 1. 상단 Menu의 File 항목에서 New Project를 선택합니다.
