@@ -171,10 +171,10 @@ User에는 GitHUB의 user_name을 쓰고, Password에는 GitHUB의 `Token passwo
 
 <img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_04.png" alt="create project">  
 
- 1. 여기서 Create Project를 눌러줍니다.
- 2. New Project라는 창으로 활성화가 될것이고, Project Path를 설정하는 창이 열립니다. 경로는 앞서 설정한것과 같이 해줍니다 (= `/home/user_name/catkin_ws/src`). 
- 3. 다음으로 넘어가면 Complie command 창이 나오는데 이 부분은 일단 넘어갑니다.
- 4. 그리고 난뒤에 finish를 눌러주면 됩니다.
+    1. 여기서 Create Project를 눌러줍니다.
+    2. New Project라는 창으로 활성화가 될것이고, Project Path를 설정하는 창이 열립니다. 경로는 앞서 설정한것과 같이 해줍니다 (= `/home/user_name/catkin_ws/src`). 
+    3. 다음으로 넘어가면 Complie command 창이 나오는데 이 부분은 일단 넘어갑니다.
+    4. 그리고 난뒤에 finish를 눌러주면 됩니다.
 
 8. 사용자의 catkin_ws/src 위치에 Step5에서 설정한 Clone Name 을 갖는 폴더가 있는지 확인하고, 폴더 내부에 패키지 구성 파일들(world 폴더, src 폴더, launch 폴더 등)과 model 압축파일 (=`[Model]RB1_500e.tar.xz`)이 있는지 확인합니다.
 
