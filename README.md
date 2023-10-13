@@ -155,7 +155,7 @@ Fork한 Repository는 원본 Repository와 연결되어 있어,
 (만약, NetBeans에서 `Team` > `Git` > `clone` 경로가 보이지 않는 경우, NetBeans 화면 좌측에 있는 Projects 패널에서 catkin_ws 를 클릭하면 보이며, 위의 경로는 git에 연동되었을 때 활성화되는 경로이므로 처음 연동하는 것이라면, Team > git > clone으로 해도 됨)  
 User에는 GitHUB의 user_name을 쓰고, Password에는 GitHUB의 `Token password`를 입력한 후 NEXT를 누릅니다.
 
-<img width="900" src="./NetBeans 16 Setting Guide/new/git_setting_01.png" alt="Project Name and Location">  
+<img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_01.png" alt="Project Name and Location">  
 
 5. Select Remote Branches를 `main*` 로 선택하고 Next를 누릅니다.
 
