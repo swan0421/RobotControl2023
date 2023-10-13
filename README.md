@@ -157,7 +157,13 @@ User에는 GitHUB의 user_name을 쓰고, Password에는 GitHUB의 `Token passwo
 
 <img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_01.png" alt="Project Name and Location">  
 
+여기서 Clone into에 있는 주소를 정확하게 위치를 잡아줘야 합니다.
+
+꼭 catkin_ws내에 src폴더로 경로를 잡도록 합니다.
+
 5. Select Remote Branches를 `main*` 로 선택하고 Next를 누릅니다.
+
+<img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_02.png" alt="Project Name and Location">  
 
 6. Parent Directory를 사용자의 `home/user_name/catkin_ws/src` 경로로 설정하고, Clone name을 사용자가 원하는 이름으로 설정하고, (참고 : Clone Name은 패키지에 관련된 이름으로 써서 다른 폴더들과 구별 지을 것) Checkout Branch는 `main*` 로 설정하고, Remote Name은 origin으로 설정한 후 Finish를 누릅니다.
 
