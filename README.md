@@ -344,8 +344,7 @@ roslaunch rb1_500e_study rb1_500e.launch
 
 **로봇을 정상적으로 불러오면 6자유의 로봇팔이 나타나며 로봇팔의 기구 정보는 다음과 같습니다.**
 
-<img width="200" src="./NetBeans 16 Setting Guide/new/rb1-500e kinematic structure.png" alt="robot image">  
-<img width="200" src="./NetBeans 16 Setting Guide/new/rb1-500e solidworks image.png" alt="robot image">  
+<img width="200" src="./NetBeans 16 Setting Guide/new/rb1-500e kinematic structure.png" alt="robot image">  <img width="200" src="./NetBeans 16 Setting Guide/new/rb1-500e solidworks image.png" alt="robot image">  
 
 
 
