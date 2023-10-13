@@ -42,37 +42,9 @@
 > sudo sh uninstall.sh
 > //uninstall 실행
 
-##### **2. Apache NetBeans 13 IDE install Guide**
+##### **2. Apache NetBeans 16 IDE install Guide**
 
-1. [NetBeans 13_linux install](https://www.apache.org/dyn/closer.cgi/netbeans/netbeans-installers/13/Apache-NetBeans-13-bin-linux-x64.sh) 링크로 접속 합니다.
-(참고 링크: https://netbeans.apache.org/download/nb13/nb13.html)
-
-2. HTTP 하단의 링크를 클릭하여 .sh 파일을 다운로드 받습니다.  
-.sh 파일의 다운로드 경로는 `/home/user_name/Downloads` 로 설정합니다.  
-*`(만약 다운로드가 되지 않는다면, 링크를 복사하여 **wget -c** 명령어로 직접 실행)`*  
-* terminal
->```
->---example---
->wget -c https://dlcdn.apache.org/...linux-x64.sh
->```
-3. 다운로드된 파일에 실행권한을 부여하고, 실행합니다.
-* terminal
->```
->chmod +x Apache-NetBeans-13-bin-linux-x64.sh
->
->./Apache-NetBeans-13-bin-linux-x64.sh
->```  
-##### **3.Apache NetBeans 13 Setting**
-1. 설치된 applications 에서 Apache NetBeans IDE 13을 실행합니다.  
-
-2. 상단 Menu의 Tools 항목 중 **Plugins**를 클릭합니다.
-
-3. Plugins창이 뜨면, Settings 카테고리로 들어가서, **NetBeans 8.2 Plugin Portal 의 Active**에 체크한 후, **Available Plugins** 카테고리로 들어가 **check for Newest** 를 클릭하여 업데이트를 진행해 줍니다.
-
-4. 업데이트를 진행 후 나타나는 c/c++ 에 install 을 체크하고 하단의 install 버튼을 클릭하여 설치를 진행합니다.  
-
-##### **(new)3-1.Apache NetBeans 16 Setting**
-1. NetBeans 13 setting의 다운로드 및 github 연동 문제가 있어 Netbeans 16 버전을 셋팅합니다.
+1. NetBeans 16 setting의 다운로드 및 github 연동 문제가 있어 Netbeans 16 버전을 셋팅합니다.
 
 2. Java install (11이상 버전 필요)
 * terminal
@@ -88,15 +60,19 @@
    > ```
    > sudo dpkg -i packge_file_name.deb
    > ```
+   *example
+   > ```
+   > sudo dpkg -i apache-netbeans_16-1_all.deb
+   > ```
 
 
-##### **4. Create New Project**
+<!-- ##### **4. Create New Project**
 1. 상단 Menu의 File 항목에서 New Project를 선택합니다.
 
 2. Choose Project Step  
 categories : **C/C++**  
 Projects : **C/C++ Project with Existing Sources**  
-<img width="700" src="./NetBeans 13 Setting Guide/choose project.png" alt="Choose Project">  
+<img width="700" src="./NetBeans 16 Setting Guide/choose project.png" alt="Choose Project">  
      
 `next`
 
@@ -107,13 +83,13 @@ Build Host : **localhost**
 Tool Collection : **Default(GNU(GNU))**  
 Use Build Analyzer **Check**  
 Configuration Mode : **Custom**  
-<img width="700" src="./NetBeans 13 Setting Guide/Select Mode.png" alt="Select Mode">  
+<img width="700" src="./NetBeans 16 Setting Guide/Select Mode.png" alt="Select Mode">  
     
 `next`
 
 4. Pre-Build Action Step  
 **Pre-Build Step is Required uncheck**  
-<img width="700" src="./NetBeans 13 Setting Guide/Pre-Build Action.png" alt="Pre-Build Action">  
+<img width="700" src="./NetBeans 16 Setting Guide/Pre-Build Action.png" alt="Pre-Build Action">  
     
 `next`
 
@@ -122,19 +98,19 @@ Working Directory : **/home/user_name/catkin_ws**
 Clean Command : **devel/env.sh catkin_make clean**  
 Build Command : **devel/env.sh catkin_make**  
 Clean and Build after Finish **check**  
-<img width="700" src="./NetBeans 13 Setting Guide/Build Actions.png" alt="Build Actions">  
+<img width="700" src="./NetBeans 16 Setting Guide/Build Actions.png" alt="Build Actions">  
     
 `next`
 
 6. Source Files Step  
 Source FIle Folders : **/home/user_name/catkin_ws**  
-<img width="700" src="./NetBeans 13 Setting Guide/Source Files.png" alt="Source Files">  
+<img width="700" src="./NetBeans 16 Setting Guide/Source Files.png" alt="Source Files">  
     
 `next`
 
 7. Code Assistance Configuration Step  
 Automatic Configuration **check**  
-<img width="700" src="./NetBeans 13 Setting Guide/Code Assistance Configuration.png" alt="Code Assistance Configuration">  
+<img width="700" src="./NetBeans 16 Setting Guide/Code Assistance Configuration.png" alt="Code Assistance Configuration">  
     
 `next`
 
@@ -144,21 +120,21 @@ Project Location : **/home/user_name/NetBeansProjects**
 Project Folder : **/home/user_name/NetBeansProjects/catkin_ws**  
 Build Host : **localhost**  
 Tool Collection : **Default(GNU(GNU))**  
-<img width="700" src="./NetBeans 13 Setting Guide/Project Name and Location.png" alt="Project Name and Location">  
+<img width="700" src="./NetBeans 16 Setting Guide/Project Name and Location.png" alt="Project Name and Location">  
     
 `하단의 빨간색 경고는 이미 해당 폴더가 이미 만들어져 있다는 경고이므로, 처음 세팅할 경우에는 등장하지 않습니다.`  
-`finish`
+`finish` -->
 
 ----
 
 
-4. [GitHub](https://github.com/)에 미리 가입한 상태면, 해당 패키지를 공동 작업하는데 있어 도움이됩니다.  
+----
+## Simulation 하기전 진행사항
+1. [GitHub](https://github.com/)에 미리 가입한 상태면, 해당 패키지를 공동 작업하는데 있어 도움이됩니다.  
 따라서, 가입을 희망합니다. 또한, `Token password`를 발급받기 바랍니다.  
 [토큰 발급 방법](https://hoohaha.tistory.com/37) 을 참고하시기 바랍니다.  
 *`토큰은 생성 이후에 다시 확인할 수 없으니, 따로 저장해두어야 합니다.`*
 
-
-----
 ## Simulation Manual 
 ### 1.[Download](https://github.com/swan0421/RobotControl2023) and Setting RobotControl2023
 1. [RobotControl2023 Repository](https://github.com/swan0421/RobotControl2023)에 접속, link : https://github.com/swan0421/RobotControl2023
@@ -182,9 +158,11 @@ Fork한 Repository는 원본 Repository와 연결되어 있어,
 (만약, NetBeans에서 `Team` > `Git` > `clone` 경로가 보이지 않는 경우, NetBeans 화면 좌측에 있는 Projects 패널에서 catkin_ws 를 클릭하면 보이며, 위의 경로는 git에 연동되었을 때 활성화되는 경로이므로 처음 연동하는 것이라면, Team > git > clone으로 해도 됨)  
 User에는 GitHUB의 user_name을 쓰고, Password에는 GitHUB의 `Token password`를 입력한 후 NEXT를 누릅니다.
 
-5. Select Remote Branches를 `master*` 로 선택하고 Next를 누릅니다.
+<img width="700" src="./NetBeans 16 Setting Guide/new/git_setting_01.png" alt="Project Name and Location">  
 
-6. Parent Directory를 사용자의 `home/user_name/catkin_ws/src` 경로로 설정하고, Clone name을 사용자가 원하는 이름으로 설정하고, (참고 : Clone Name은 패키지에 관련된 이름으로 써서 다른 폴더들과 구별 지을 것) Checkout Branch는 `master*` 로 설정하고, Remote Name은 origin으로 설정한 후 Finish를 누릅니다.
+5. Select Remote Branches를 `main*` 로 선택하고 Next를 누릅니다.
+
+6. Parent Directory를 사용자의 `home/user_name/catkin_ws/src` 경로로 설정하고, Clone name을 사용자가 원하는 이름으로 설정하고, (참고 : Clone Name은 패키지에 관련된 이름으로 써서 다른 폴더들과 구별 지을 것) Checkout Branch는 `main*` 로 설정하고, Remote Name은 origin으로 설정한 후 Finish를 누릅니다.
 
 7. 사용자의 catkin_ws/src 위치에 Step5에서 설정한 Clone Name 을 갖는 폴더가 있는지 확인하고, 폴더 내부에 패키지 구성 파일들(world 폴더, src 폴더, launch 폴더 등)과 model 압축파일 (=`[Model]RB1_500e.tar.xz`)이 있는지 확인합니다.
 
