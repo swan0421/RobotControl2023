@@ -163,20 +163,29 @@ User에는 GitHUB의 user_name을 쓰고, Password에는 GitHUB의 `Token passwo
 
 5. Select Remote Branches를 `main*` 로 선택하고 Next를 누릅니다.
 
-<img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_02.png" alt="Project Name and Location">  
+<img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_02.png" alt="main page">  
 
-6. Parent Directory를 사용자의 `home/user_name/catkin_ws/src` 경로로 설정하고, Clone name을 사용자가 원하는 이름으로 설정하고, (참고 : Clone Name은 패키지에 관련된 이름으로 써서 다른 폴더들과 구별 지을 것) Checkout Branch는 `main*` 로 설정하고, Remote Name은 origin으로 설정한 후 Finish를 누릅니다.
+6. Parent Directory를 사용자의 `home/user_name/catkin_ws/src` 경로로 설정하고, Clone name을 사용자가 원하는 이름으로 설정하고, (참고 : Clone Name은 패키지에 관련된 이름으로 써서 다른 폴더들과 구별 지을 것, example: RobotControl2023) Checkout Branch는 `main*` 로 설정하고, Remote Name은 origin으로 설정한 후 Finish를 누릅니다.
 
-7. 사용자의 catkin_ws/src 위치에 Step5에서 설정한 Clone Name 을 갖는 폴더가 있는지 확인하고, 폴더 내부에 패키지 구성 파일들(world 폴더, src 폴더, launch 폴더 등)과 model 압축파일 (=`[Model]RB1_500e.tar.xz`)이 있는지 확인합니다.
+7. 정확하게 셋팅이 되었다면 다음과 같은 화면이 활성화 됩니다.
 
-8. `[Model]RB1_500e.tar.xz` 파일을 압축 푼뒤에 `[Model]RB1_500e`폴더 안에 있는 `RB1_500e`를 `HOME/.gazebo/models/` 폴더로 가져와서 시뮬레이션을 위한 파일 셋팅을 마무리합니다.  
+<img width="1200" src="./NetBeans 16 Setting Guide/new/git_setting_04.png" alt="create project">  
+
+ 1. 여기서 Create Project를 눌러줍니다.
+ 2. New Project라는 창으로 활성화가 될것이고, Project Path를 설정하는 창이 열립니다. 경로는 앞서 설정한것과 같이 해줍니다 (= `/home/user_name/catkin_ws/src`). 
+ 3. 다음으로 넘어가면 Complie command 창이 나오는데 이 부분은 일단 넘어갑니다.
+ 4. 그리고 난뒤에 finish를 눌러주면 됩니다.
+
+8. 사용자의 catkin_ws/src 위치에 Step5에서 설정한 Clone Name 을 갖는 폴더가 있는지 확인하고, 폴더 내부에 패키지 구성 파일들(world 폴더, src 폴더, launch 폴더 등)과 model 압축파일 (=`[Model]RB1_500e.tar.xz`)이 있는지 확인합니다.
+
+9. `[Model]RB1_500e.tar.xz` 파일을 압축 푼뒤에 `[Model]RB1_500e`폴더 안에 있는 `RB1_500e`를 `HOME/.gazebo/models/` 폴더로 가져와서 시뮬레이션을 위한 파일 셋팅을 마무리합니다.  
 ***(`.gazebo` 폴더가 보이지 않으면,  Home 폴더에서, `Ctrl+H` 를 눌러서 폴더 숨김 해제를 할 것)***  
 ***(Gazebo를 실행한 적이 없는 경우, 숨김해제를 하여도 폴더가 보이지 않을 수 있음. Terminal 에서 `gazebo`를 입력하여 한번 실행해준 후 다시 확인할 것)***
          
-9. 패키지를 컴파일하기 위해 Netbeans에서 터미널 창을 열거나 기본 터미널 창에서 `cd ~/catkin_ws && catkin_make`을 입력하여 컴파일을 진행합니다. 
+10. 패키지를 컴파일하기 위해 Netbeans에서 터미널 창을 열거나 기본 터미널 창에서 `cd ~/catkin_ws && catkin_make`을 입력하여 컴파일을 진행합니다. 
 ***(터미널 창이 안보인다면, Netbeans의 상단 `Winodow > IDE Tools > Termianl` 을 클릭)***
 
-10. 만약, `catkin_make`가 안될 경우, section 2를 해보시기 바랍니다.
+11. 만약, `catkin_make`가 안될 경우, section 2를 해보시기 바랍니다.
 ----
 
 
