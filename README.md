@@ -349,7 +349,6 @@ roslaunch rb1_500e_study rb1_500e.launch
 
 
 ## 1. 실습 1 : 3-Link Planar Arm의 Forward Kinematics
-<!--
 * void Practice() 함수 만들기
 ```c
 void Practice()
@@ -376,6 +375,7 @@ MatrixXd jointToRotMat(VectorXd q)
 VectorXd rotToEuler(MatrixXd rotMat)	// EulerZYX
 ~~~
 
+<!--
 ## 2. 실습 2 : RB1_500e의 Forward Kinematics  
 
 <img width="700" src="./RB1_500e_img/RB1_500e Frame.jpg" alt="RB1_500e frame">  
