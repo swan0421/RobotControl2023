@@ -715,4 +715,4 @@ double func_1_cos(double t, double, init, double final, double T)
 6. 두발 지지 (Cartesian Coordinates)
 
 ### 과제
-* 땅에서 실습 7 수행하기 --> -->
+* 땅에서 실습 7 수행하기 -->
