@@ -377,7 +377,7 @@ VectorXd rotToEuler(MatrixXd rotMat)	// EulerZYX
 
 ## 2. 실습 2 : RB1_500e의 Forward Kinematics  
 
-<img width="700" src="./RB1_500e_img/RB1_500e Frame.jpg" alt="RB1_500e frame">  
+// <img width="700" src="./RB1_500e_img/RB1_500e Frame.jpg" alt="RB1_500e frame">  
     
 * Homogeneous Transformation Matrix 만들기
 ~~~c
