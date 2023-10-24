@@ -567,7 +567,6 @@ VectorXd rotToEuler(MatrixXd rotMat)
 1. source 코드
 2. 출력된 결과물 capture 파일
 
-<!--
 
 ## 3. 실습 3 : RB1_500e의 Geometric Jacobian
 
@@ -692,6 +691,7 @@ MatrixXd jointToRotJac(VectorXd q)
 1. source 코드
 2. 출력된 결과물 capture 파일
 
+<!--
 
 ## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotTatToRotVec 함수 만들리
 
