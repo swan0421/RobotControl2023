@@ -693,6 +693,10 @@ MatrixXd jointToRotJac(VectorXd q)
 
 
 ## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotMatToRotVec 함수 만들기
+* Matrix Pesudo-Inversion
+The Moore-Pensore pseudo-inverse is a generalization of the matrix inversion operation for non-square matrices. Let a non-square matrix A be defined in R^{mxn}.
+
+
 
 * pseudoInverseMat 함수 만들기
 ~~~c
