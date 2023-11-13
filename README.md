@@ -691,9 +691,8 @@ MatrixXd jointToRotJac(VectorXd q)
 1. source 코드
 2. 출력된 결과물 capture 파일
 
-<!--
 
-## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotTatToRotVec 함수 만들리
+## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotTatToRotVec 함수 만들기
 
 * pseudoInverseMat 함수 만들기
 ~~~c
@@ -844,6 +843,8 @@ void Practice()
 * Desired Pos = [0;0.105;-0.55] & Desired Orientation = Base
 * Result = [0;0;-63.756;127.512;-63.756]
 
+
+<!--
 
 ## 6. 실습 6 : RB1_500e의 Motion Control
 
