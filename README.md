@@ -692,7 +692,7 @@ MatrixXd jointToRotJac(VectorXd q)
 2. 출력된 결과물 capture 파일
 
 
-## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotTatToRotVec 함수 만들기
+## 실습 4 : RB1_500e의 Pseudo-Inverse 함수와 rotMatToRotVec 함수 만들기
 
 * pseudoInverseMat 함수 만들기
 ~~~c
