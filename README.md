@@ -845,9 +845,8 @@ void Practice()
 
 ### 과제 2 (수정필요)
 * Desired Pos = [0;0;0.3] & Desired Orientation = Base
-<!--
-* Result = [0;0;-63.756;127.512;-63.756]
--->
+* Result = [?;?;?;?;?;?]
+
 
 
 ## 6. 실습 6 : RB1_500e의 Motion Control
