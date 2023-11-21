@@ -844,7 +844,7 @@ void Practice()
 2. 출력된 결과물 capture 파일
 
 ### 과제 2 (수정필요)
-* Desired Pos = [0.28;0;0.1] & Desired Orientation = Base에 대해 y방향으로 180도 회전
+* Desired Pos = [0.28;0;0.1] & Desired Orientation = Base에 대해 y방향으로 180도 회전 ([-1 0 0;0 1 0;0 0 -1])
 * Result = [?;?;?;?;?;?]
 
 
